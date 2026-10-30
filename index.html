@@ -189,56 +189,54 @@ img { max-width: 100%; }
 <div class="wrap">
   <header class="topbar">
     <div class="brand">AI-Driven <span>SDLC</span></div>
-    <nav><span class="eyebrow">Đề xuất · 30/10/2026</span><a href="#tai-lieu">Tải tài liệu</a></nav>
+    <nav><span class="eyebrow">Cập nhật 30/10/2026</span><a href="#tai-lieu">Tải file</a></nav>
   </header>
 
   <div class="hero">
-    <div class="eyebrow">Rikkei Academy · Chương trình AI-Driven Software Development Life Cycle</div>
-    <h1>Từ 37 tuần xuống <em>26 tuần</em>, giữ nguyên năng lực đầu ra</h1>
-    <p class="lead">Lộ trình hiện tại kéo dài khoảng 9 tháng vì nhiều nội dung được dạy hai lần: một lần tự code ở Giai đoạn 1, một lần làm lại với AI agent ở Giai đoạn 2. Bản 6 tháng gộp các phần trùng, giữ đủ 4 bài thi Phase và buổi Defense, và đưa Capstone lên hệ thống IOC để tính luôn là OJT.</p>
+    <div class="eyebrow">Rikkei Academy · Chương trình AI-Driven SDLC</div>
+    <h1>Đề xuất rút lộ trình xuống <em>6 tháng</em></h1>
+    <p class="lead">Lộ trình hiện tại là 37 tuần, khoảng 9 tháng. Đề xuất rút còn 26 tuần. Lý do chính là nhiều nội dung đang dạy 2 lần: GĐ1 học viên tự code, sang GĐ2 lại làm lại phần đó với AI agent. Bản mới gộp các phần trùng, vẫn giữ đủ các bài thi Phase và buổi Defense, Capstone chuyển lên IOC và tính luôn là OJT.</p>
     <div class="stats">
-      <div class="stat"><b class="num">37</b><span>tuần, lộ trình hiện tại</span></div>
-      <div class="stat hl"><b class="num">26</b><span>tuần, lộ trình 6 tháng</span></div>
-      <div class="stat"><b class="num">−11</b><span>tuần (−30%)</span></div>
-      <div class="stat"><b class="num">6/6</b><span>mốc thi được giữ lại</span></div>
+      <div class="stat"><b class="num">37</b><span>tuần (hiện tại)</span></div>
+      <div class="stat hl"><b class="num">26</b><span>tuần (đề xuất)</span></div>
+      <div class="stat"><b class="num">−11</b><span>tuần, giảm khoảng 30%</span></div>
+      <div class="stat"><b class="num">6</b><span>bài thi, giữ nguyên</span></div>
     </div>
   </div>
 
   <section id="ribbon">
     <div class="sec-head">
-      <div class="eyebrow">Đúng tỷ lệ, mỗi ô là một tuần</div>
-      <h2>Hai lộ trình đặt cạnh nhau</h2>
-      <p class="lead">Chạm hoặc rê chuột vào một ô để xem nội dung tuần đó. Chấm đen là tuần có bài thi.</p>
+      <h2>1. So sánh hai lộ trình</h2>
+      <p class="lead">Mỗi ô là 1 tuần, chấm đen là tuần có thi. Bấm vào ô để xem nội dung tuần đó.</p>
     </div>
     <div class="ribbons">
       <div class="ribbon-row">
-        <div class="ribbon-label"><strong>Hiện tại</strong><span>10 + 18 + 9 = 37 tuần · ~9 tháng</span></div>
+        <div class="ribbon-label"><strong>Hiện tại</strong><span>10 + 18 + 9 = 37 tuần (~9 tháng)</span></div>
         <div class="ribbon old" id="rib-old"></div>
       </div>
       <div class="ribbon-row">
-        <div class="ribbon-label"><strong>Đề xuất 6 tháng</strong><span>7 + 12 + 7 = 26 tuần</span></div>
+        <div class="ribbon-label"><strong>Đề xuất</strong><span>7 + 12 + 7 = 26 tuần (6 tháng)</span></div>
         <div class="ribbon new" id="rib-new"></div>
         <div class="axis" id="axis"></div>
-        <div class="axis"><span class="gone-tag">11 tuần được gộp</span></div>
+        <div class="axis"><span class="gone-tag">giảm 11 tuần</span></div>
       </div>
       <div class="legend">
-        <span><i style="background:var(--p1)"></i>Nền tảng Fullstack</span>
-        <span><i style="background:var(--p2)"></i>AI-SDLC Module 1–4</span>
+        <span><i style="background:var(--p1)"></i>GĐ1 Fullstack</span>
+        <span><i style="background:var(--p2)"></i>GĐ2 Module 1–4</span>
         <span><i style="background:var(--p3)"></i>Capstone &amp; OJT</span>
         <span><i class="dot"></i>Tuần thi</span>
       </div>
-      <div class="cell-info" id="cell-info" aria-live="polite"><b>GỢI Ý</b>Chọn một ô ở trên để xem chi tiết tuần.</div>
+      <div class="cell-info" id="cell-info" aria-live="polite">Bấm vào một ô để xem nội dung tuần.</div>
     </div>
   </section>
 
   <section id="phases">
     <div class="sec-head">
-      <div class="eyebrow">Từng giai đoạn</div>
-      <h2>Rút ở đâu, giữ lại gì</h2>
+      <h2>2. Thay đổi theo từng giai đoạn</h2>
     </div>
     <div class="phases">
       <article class="phase" style="--c:var(--p1)">
-        <div class="eyebrow">Giai đoạn 1 · Fullstack nền tảng</div>
+        <div class="eyebrow">GĐ1 · Fullstack</div>
         <div class="from-to"><span class="old">10</span><span class="arrow">→</span><span class="new">7</span><small>tuần</small></div>
         <ul>
           <li><span>Git + HTML/CSS responsive</span><span class="wk">gộp <b>T1+T2</b></span></li>
@@ -247,58 +245,56 @@ img { max-width: 100%; }
           <li><span>Node/Express + Sequelize</span><span class="wk"><b>T7, T8</b></span></li>
           <li><span>Auth/JWT</span><span class="wk">chuyển sang <b>GĐ2</b></span></li>
         </ul>
-        <p class="why">7 tuần × 6h = 42h, nhiều hơn 39,5h đang có kế hoạch chi tiết trong file Excel hiện tại.</p>
+        <p class="why">7 tuần × 6h = 42h. File cũ ghi 60h nhưng thực tế mới có 39,5h được soạn chi tiết.</p>
       </article>
       <article class="phase" style="--c:var(--p2)">
-        <div class="eyebrow">Giai đoạn 2 · AI-SDLC M1–M4</div>
+        <div class="eyebrow">GĐ2 · Module 1–4</div>
         <div class="from-to"><span class="old">18</span><span class="arrow">→</span><span class="new">12</span><small>tuần</small></div>
         <ul>
           <li><span>M1 AI-assisted Programming</span><span class="wk">3 → <b>2</b></span></li>
           <li><span>M2 Spec-first SE (thêm ADR)</span><span class="wk">4 → <b>3</b></span></li>
-          <li><span>M3 Agentic Fullstack (nhận Auth)</span><span class="wk">6 → <b>4</b></span></li>
+          <li><span>M3 Agentic Fullstack (thêm Auth)</span><span class="wk">6 → <b>4</b></span></li>
           <li><span>M4 Security, DevOps, Cloud</span><span class="wk">5 → <b>3</b></span></li>
         </ul>
-        <p class="why">Học viên đã tự code fullstack ở GĐ1, nên M3 chỉ tập trung vào giao việc, review và kiểm soát agent. M4 bỏ tuần thi riêng, thi vào cuối tuần 19.</p>
+        <p class="why">Phần code fullstack học viên đã tự làm ở GĐ1, nên M3 chỉ tập trung vào giao việc và review agent. M4 bỏ tuần thi riêng, thi luôn cuối tuần 19.</p>
       </article>
       <article class="phase" style="--c:var(--p3)">
-        <div class="eyebrow">Giai đoạn 3 · Capstone &amp; OJT</div>
+        <div class="eyebrow">GĐ3 · Capstone &amp; OJT</div>
         <div class="from-to"><span class="old">9</span><span class="arrow">→</span><span class="new">7</span><small>tuần</small></div>
         <ul>
-          <li><span>Kickoff, spec baseline (M0–M1)</span><span class="wk"><b>1</b> tuần</span></li>
+          <li><span>Kickoff, chốt spec (M0–M1)</span><span class="wk"><b>1</b> tuần</span></li>
           <li><span>Sprint Backend, Frontend (M2–M3)</span><span class="wk"><b>2</b> tuần</span></li>
           <li><span>Hardening, CI, release (M4–M6)</span><span class="wk"><b>1</b> tuần</span></li>
-          <li><span>Pha Brownfield trên code nhóm khác</span><span class="wk"><b>2</b> tuần</span></li>
+          <li><span>Brownfield trên code nhóm khác</span><span class="wk"><b>2</b> tuần</span></li>
           <li><span>Defense + đánh giá OJT (M7)</span><span class="wk"><b>1</b> tuần</span></li>
         </ul>
-        <p class="why">Capstone M5 và OJT trước đây đều là làm dự án. Gộp lại và chạy trên IOC theo Scrum vẫn giữ được cam kết OJT và Brownfield.</p>
+        <p class="why">M5 và OJT cũ đều là làm dự án nên gộp làm một, chạy trên IOC theo Scrum. Vẫn có OJT và pha Brownfield như tài liệu tư vấn đã ghi.</p>
       </article>
     </div>
   </section>
 
   <section id="savings">
     <div class="sec-head">
-      <div class="eyebrow">11 tuần được tiết kiệm từ đâu</div>
-      <h2>Số tuần gộp theo từng phần</h2>
+      <h2>3. Số tuần giảm ở từng phần</h2>
     </div>
     <div class="savings" id="savings-bars"></div>
   </section>
 
   <section id="duplicates">
     <div class="sec-head">
-      <div class="eyebrow">Lý do rút được mà không mất nội dung</div>
-      <h2>Các phần đang dạy hai lần</h2>
-      <p class="lead">Phần nền do học viên tự code được giữ ở GĐ1. GĐ2 chỉ học cách giao việc, kiểm soát và review agent trên chính nội dung đó.</p>
+      <h2>4. Các nội dung đang dạy lặp</h2>
+      <p class="lead">Đây là chỗ rút được nhiều thời gian nhất. Phần tự code giữ ở GĐ1, sang GĐ2 chỉ dạy cách làm bằng agent và review.</p>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Nội dung</th><th>Giai đoạn 1</th><th>Giai đoạn 2</th><th>Lộ trình 6 tháng</th></tr></thead>
+        <thead><tr><th>Nội dung</th><th>GĐ1 cũ</th><th>GĐ2 cũ</th><th>Lộ trình mới</th></tr></thead>
         <tbody>
-          <tr><td>Git, branch, Pull Request</td><td class="num">Tuần 1</td><td class="num">Tuần 8</td><td>Cơ bản học qua e-learning; workflow nhóm dạy ở tuần 13</td></tr>
-          <tr><td>Backend Express, CRUD, Database</td><td class="num">Tuần 7–8</td><td class="num">Tuần 9–10</td><td>GĐ1 tự code; tuần 14 làm lại qua agent</td></tr>
-          <tr><td>Auth, JWT, bảo vệ route</td><td class="num">Tuần 9</td><td class="num">Tuần 10</td><td>Chỉ dạy một lần, ở tuần 14</td></tr>
-          <tr><td>Frontend React gọi API</td><td class="num">Tuần 5–6</td><td class="num">Tuần 11</td><td>GĐ1 tự code; tuần 15 tích hợp fullstack + E2E</td></tr>
-          <tr><td>Fetch, async/await</td><td class="num">Tuần 3, Lab 3.2</td><td class="num">Tuần 4</td><td>Gộp vào tuần 2</td></tr>
-          <tr><td>Làm dự án hoàn chỉnh</td><td class="num">M5, 5 tuần</td><td class="num">OJT, 4 tuần</td><td>Capstone chạy trên IOC, 7 tuần</td></tr>
+          <tr><td>Git, branch, Pull Request</td><td class="num">Tuần 1</td><td class="num">Tuần 8</td><td>Phần cơ bản học qua e-learning, workflow nhóm dạy ở tuần 13</td></tr>
+          <tr><td>Backend Express, CRUD, Database</td><td class="num">Tuần 7–8</td><td class="num">Tuần 9–10</td><td>GĐ1 tự code, tuần 14 làm lại bằng agent</td></tr>
+          <tr><td>Auth, JWT, bảo vệ route</td><td class="num">Tuần 9</td><td class="num">Tuần 10</td><td>Chỉ dạy 1 lần ở tuần 14</td></tr>
+          <tr><td>Frontend React gọi API</td><td class="num">Tuần 5–6</td><td class="num">Tuần 11</td><td>GĐ1 tự code, tuần 15 tích hợp fullstack + E2E</td></tr>
+          <tr><td>Fetch, async/await</td><td class="num">Tuần 3 (Lab 3.2)</td><td class="num">Tuần 4</td><td>Gộp vào tuần 2</td></tr>
+          <tr><td>Làm dự án</td><td class="num">M5, 5 tuần</td><td class="num">OJT, 4 tuần</td><td>Gộp thành Capstone trên IOC, 7 tuần</td></tr>
         </tbody>
       </table>
     </div>
@@ -306,74 +302,68 @@ img { max-width: 100%; }
 
   <section id="roadmap">
     <div class="sec-head">
-      <div class="eyebrow">Chi tiết từng tuần</div>
-      <h2>Lộ trình theo tuần</h2>
+      <h2>5. Lộ trình chi tiết theo tuần</h2>
     </div>
     <div class="tabs" role="tablist" aria-label="Chọn lộ trình">
-      <button id="tab-new" role="tab" aria-selected="true" aria-controls="weeks">Đề xuất · 26 tuần</button>
-      <button id="tab-old" role="tab" aria-selected="false" aria-controls="weeks">Hiện tại · 37 tuần</button>
+      <button id="tab-new" role="tab" aria-selected="true" aria-controls="weeks">Đề xuất (26 tuần)</button>
+      <button id="tab-old" role="tab" aria-selected="false" aria-controls="weeks">Hiện tại (37 tuần)</button>
     </div>
     <ol class="weeks" id="weeks" role="tabpanel"></ol>
   </section>
 
   <section id="hours">
     <div class="sec-head">
-      <div class="eyebrow">Giờ học</div>
-      <h2>Thời lượng so sánh</h2>
+      <h2>6. Thời lượng</h2>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Phần</th><th>Hiện tại</th><th>Đề xuất</th><th>Ghi chú</th></tr></thead>
         <tbody>
-          <tr><td>GĐ1 Fullstack</td><td class="num">10 tuần · 60h ghi<br>(39,5h có chi tiết)</td><td class="num">7 tuần · 42h</td><td>2 buổi × 3h/tuần, cộng ~45 phút tự học trước mỗi tuần</td></tr>
-          <tr><td>GĐ2 Module 1–4</td><td class="num">18 tuần · ~162h*</td><td class="num">12 tuần · ~108h*</td><td>3 buổi/tuần: tự học, mentor, giảng viên</td></tr>
-          <tr><td>Capstone + OJT</td><td class="num">5 + 4 tuần</td><td class="num">7 tuần</td><td>Capstone chạy trên IOC, tính là OJT</td></tr>
-          <tr><td><b>Tổng</b></td><td class="num"><b>37 tuần · ~9 tháng</b></td><td class="num"><b>26 tuần · 6 tháng</b></td><td><span class="tag">−11 tuần</span></td></tr>
+          <tr><td>GĐ1 Fullstack</td><td class="num">10 tuần · ghi 60h<br>(soạn chi tiết 39,5h)</td><td class="num">7 tuần · 42h</td><td>2 buổi × 3h/tuần, thêm khoảng 45 phút tự học trước buổi</td></tr>
+          <tr><td>GĐ2 Module 1–4</td><td class="num">18 tuần · ~162h (*)</td><td class="num">12 tuần · ~108h (*)</td><td>3 buổi/tuần: tự học, mentor, giảng viên</td></tr>
+          <tr><td>Capstone + OJT</td><td class="num">5 + 4 tuần</td><td class="num">7 tuần</td><td>Làm trên IOC, tính là OJT</td></tr>
+          <tr><td><b>Tổng</b></td><td class="num"><b>37 tuần (~9 tháng)</b></td><td class="num"><b>26 tuần (6 tháng)</b></td><td><span class="tag">−11 tuần</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">* File Excel hiện chưa ghi thời lượng cho GĐ2. Số giờ ở đây giả định mỗi buổi 3h, mỗi tuần 9h, trong đó 6h có mentor hoặc giảng viên.</p>
+    <p class="note">(*) File gốc chưa có thời lượng GĐ2, tạm tính 3h/buổi, 9h/tuần, trong đó 6h có mentor/giảng viên.</p>
   </section>
 
   <section id="risks">
     <div class="sec-head">
-      <div class="eyebrow">Cần quyết định trước khi áp dụng</div>
-      <h2>Rủi ro và cách xử lý</h2>
+      <h2>7. Các điểm cần chốt</h2>
     </div>
     <div class="risks">
-      <div class="risk"><h3>Người chuyển ngành khó theo kịp GĐ1</h3><p>Học fullstack từ đầu trong 42h là rất nhanh. <b>Cách xử lý:</b> có bài test đầu vào và khóa dự bị e-learning 2–3 tuần trước khai giảng, không tính vào 6 tháng.</p></div>
-      <div class="risk"><h3>Một số tuần GĐ2 nặng hơn</h3><p>Các tuần 9, 12, 14 và 18 gánh nội dung của hai tuần cũ. <b>Cách xử lý:</b> buổi tự học cần có video, checklist và template đầu ra thật rõ.</p></div>
-      <div class="risk"><h3>Mutation Testing chưa có buổi riêng</h3><p>Đây là cam kết đầu ra trong tài liệu tư vấn. <b>Cách xử lý:</b> đưa thành bài thực hành nhỏ ở tuần 13 (TDD), hoặc bỏ khỏi cam kết.</p></div>
-      <div class="risk"><h3>6 tháng có tính cả OJT không?</h3><p>Bản này tính cả OJT trong 26 tuần. <b>Nếu OJT tính riêng:</b> có thể nới thành GĐ1 8 tuần và GĐ2 18 tuần (gồm Capstone), sau đó OJT thêm 4 tuần.</p></div>
+      <div class="risk"><h3>Học viên chuyển ngành</h3><p>42h học fullstack từ đầu là khá gấp. <b>Đề xuất:</b> làm test đầu vào, thêm khóa dự bị e-learning 2–3 tuần trước khai giảng (không tính vào 6 tháng).</p></div>
+      <div class="risk"><h3>Một số tuần GĐ2 bị nặng</h3><p>Tuần 9, 12, 14 và 18 đang gộp nội dung của 2 tuần cũ. <b>Đề xuất:</b> chuẩn bị kỹ video, checklist và template cho buổi tự học.</p></div>
+      <div class="risk"><h3>Mutation Testing</h3><p>Tài liệu tư vấn có ghi nhưng chưa có buổi dạy riêng. <b>Đề xuất:</b> thêm 1 bài nhỏ vào tuần 13 (TDD), hoặc bỏ khỏi phần cam kết.</p></div>
+      <div class="risk"><h3>OJT tính chung hay tách riêng</h3><p>Bản này đang tính OJT trong 26 tuần. Nếu tách riêng thì có thể để GĐ1 8 tuần, GĐ2 18 tuần (gồm Capstone), sau đó OJT 4 tuần.</p></div>
     </div>
   </section>
 
-
   <section id="tai-lieu">
     <div class="sec-head">
-      <div class="eyebrow">Tài liệu đi kèm</div>
-      <h2>Tải chương trình 6 tháng</h2>
-      <p class="lead">Hai file dưới đây dùng cùng lộ trình 26 tuần với trang này.</p>
+      <h2>8. File đính kèm</h2>
     </div>
     <div class="downloads">
       <a class="dl" style="--c:var(--good)" href="files/AI-Driven-SDLC-6-thang.xlsx" download>
         <span class="ext">XLSX</span>
         <strong>Chương trình chi tiết</strong>
-        <span>6 sheet: tổng quan 26 tuần, thống kê thời lượng (có công thức), chi tiết GĐ1–GĐ3, so sánh cũ và mới · 31 KB</span>
+        <span>Tổng quan 26 tuần, thống kê thời lượng, chi tiết GĐ1–GĐ3, bảng so sánh cũ/mới · 31 KB</span>
         <span class="go">Tải file Excel</span>
       </a>
       <a class="dl" style="--c:var(--p1)" href="files/AI-Driven-SDLC-6-thang.docx" download>
         <span class="ext">DOCX</span>
         <strong>Tài liệu chương trình</strong>
-        <span>Tài liệu tư vấn 12 trang đã cập nhật lộ trình 6 tháng, quyền lợi, đầu ra và quy trình việc làm · 5,4 MB</span>
+        <span>Tài liệu tư vấn đã sửa theo lộ trình 6 tháng · 12 trang · 5,4 MB</span>
         <span class="go">Tải file Word</span>
       </a>
     </div>
   </section>
 
   <footer>
-    <span>Số liệu lấy từ "CHƯƠNG TRÌNH AI - DRIVEN SDLC CHI TIẾT.xlsx" và tài liệu chương trình bản Word, cập nhật 30/10/2026.</span>
-    <span>Đây là bản đề xuất để thảo luận nội bộ, chưa phải lộ trình chính thức.</span>
+    <span>Nguồn: file "CHƯƠNG TRÌNH AI - DRIVEN SDLC CHI TIẾT.xlsx" và tài liệu chương trình bản Word.</span>
+    <span>Bản nháp, cập nhật 30/10/2026, chưa phải lộ trình chính thức.</span>
   </footer>
 </div>
 
@@ -446,7 +436,7 @@ const NEW = [
   [3,"Brownfield: sửa bug, regression, changelog","Từ OJT"],
   [3,"Defense trước hội đồng + đánh giá OJT (M7)","Từ M5 T23 và OJT",1]
 ];
-const PHASE_NAME = {1:"Nền tảng Fullstack", 2:"AI-SDLC Module 1–4", 3:"Capstone & OJT"};
+const PHASE_NAME = {1:"GĐ1 Fullstack", 2:"GĐ2 Module 1–4", 3:"Capstone & OJT"};
 const PHASE_VAR = {1:"var(--p1)", 2:"var(--p2)", 3:"var(--p3)"};
 
 const info = document.getElementById("cell-info");
@@ -469,9 +459,9 @@ function cell(w, i, label) {
   return c;
 }
 const ribOld = document.getElementById("rib-old");
-OLD.forEach((w, i) => ribOld.append(cell(w, i, "HIỆN TẠI · TUẦN " + (i + 1))));
+OLD.forEach((w, i) => ribOld.append(cell(w, i, "HIỆN TẠI · T" + (i + 1))));
 const ribNew = document.getElementById("rib-new");
-NEW.forEach((w, i) => ribNew.append(cell(w, i, "ĐỀ XUẤT · TUẦN " + (i + 1))));
+NEW.forEach((w, i) => ribNew.append(cell(w, i, "ĐỀ XUẤT · T" + (i + 1))));
 for (let i = NEW.length; i < OLD.length; i++) {
   const g = document.createElement("div");
   g.className = "cell gone";
