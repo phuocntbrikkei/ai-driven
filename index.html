@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="So sánh lộ trình AI-Driven SDLC hiện tại (37 tuần) với bản đề xuất 6 tháng (26 tuần).">
+<title>Lộ trình AI-Driven SDLC 6 tháng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: a to-scale week ribbon is the hero; everything below explains where each removed week went. */
+:root {
+  --bg: #faf7f6;
+  --surface: #ffffff;
+  --ink: #1e1a1b;
+  --muted: #6b6164;
+  --line: #e6dedd;
+  --accent: #c8102e;
+  --accent-soft: #fbe7ea;
+  --p1: #3d5a80;       /* Nền tảng fullstack */
+  --p2: #c8102e;       /* AI-SDLC M1–M4 */
+  --p3: #d98e04;       /* Capstone & OJT */
+  --ghost: #d9cfcd;
+  --good: #1f7a4d;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161314; --surface: #1f1b1c; --ink: #f3eeee; --muted: #a89c9f; --line: #352e30;
+    --accent: #ff4d63; --accent-soft: #3a1a20; --p1: #7fa3d1; --p2: #ff4d63; --p3: #f2b233;
+    --ghost: #4a4144; --good: #5cc98f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161314; --surface: #1f1b1c; --ink: #f3eeee; --muted: #a89c9f; --line: #352e30;
+  --accent: #ff4d63; --accent-soft: #3a1a20; --p1: #7fa3d1; --p2: #ff4d63; --p3: #f2b233;
+  --ghost: #4a4144; --good: #5cc98f; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; text-wrap: balance; margin: 0; letter-spacing: .01em; }
+h2 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 800; text-transform: uppercase; }
+h3 { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; }
+p { margin: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lead { color: var(--muted); max-width: 62ch; }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 32px; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Top bar */
+.topbar { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; padding-block: 20px; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; text-transform: uppercase; letter-spacing: .03em; }
+.brand span { color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: 40px 56px; display: grid; gap: 36px; }
+.hero h1 { font-size: clamp(2.6rem, 7.5vw, 5.4rem); font-weight: 800; text-transform: uppercase; max-width: 15ch; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--line); }
+.stat { padding: 18px 16px 18px 0; display: grid; gap: 2px; }
+.stat + .stat { padding-left: 16px; border-left: 1px solid var(--line); }
+.stat b { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: .85rem; color: var(--muted); }
+.stat.hl b { color: var(--accent); }
+@media (max-width: 640px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .stat:nth-child(4) { border-top: 1px solid var(--line); }
+}
+
+/* Ribbon */
+.ribbons { display: grid; gap: 28px; }
+.ribbon-row { display: grid; gap: 8px; }
+.ribbon-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.ribbon-label strong { font-family: var(--font-display); font-size: 1.35rem; text-transform: uppercase; font-weight: 800; }
+.ribbon-label span { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+.ribbon { display: grid; grid-template-columns: repeat(37, minmax(0, 1fr)); gap: 3px; }
+.cell { height: 44px; border-radius: 2px; position: relative; background: var(--ghost); }
+.cell.p1 { background: var(--p1); }
+.cell.p2 { background: var(--p2); }
+.cell.p3 { background: var(--p3); }
+.cell.gone { background: transparent; border: 1.5px dashed var(--ghost); }
+.cell.exam::after { content: ""; position: absolute; left: 50%; top: -9px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--ink); }
+.cell:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.axis { display: grid; grid-template-columns: repeat(37, minmax(0, 1fr)); gap: 3px; font-family: var(--font-mono); font-size: .65rem; color: var(--muted); }
+.axis span { text-align: center; }
+.gone-tag { grid-column: 27 / 38; text-align: center; font-family: var(--font-mono); font-size: .75rem; color: var(--accent); font-weight: 700; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .85rem; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.legend .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); vertical-align: 2px; }
+.cell-info { min-height: 3.2em; font-size: .9rem; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.cell-info b { font-family: var(--font-mono); font-size: .8rem; color: var(--accent); margin-right: 8px; }
+@media (max-width: 560px) { .cell { height: 30px; } .axis span:nth-child(even) { visibility: hidden; } }
+
+/* Phase compare */
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 860px) { .phases { grid-template-columns: 1fr; } }
+.phase { display: grid; gap: 16px; align-content: start; padding-top: 18px; border-top: 5px solid var(--c); }
+.phase .from-to { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); font-weight: 800; font-variant-numeric: tabular-nums; }
+.phase .from-to .old { font-size: 2.2rem; color: var(--muted); text-decoration: line-through; text-decoration-thickness: 3px; }
+.phase .from-to .arrow { color: var(--muted); font-size: 1.4rem; }
+.phase .from-to .new { font-size: 3.4rem; color: var(--c); line-height: 1; }
+.phase .from-to small { font-family: var(--font-body); font-size: .9rem; color: var(--muted); font-weight: 500; }
+.phase ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.phase li { display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: .92rem; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.phase li .wk { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); white-space: nowrap; }
+.phase li .wk b { color: var(--ink); }
+.phase .why { font-size: .9rem; color: var(--muted); }
+
+/* Savings bars */
+.savings { display: grid; gap: 10px; max-width: 720px; }
+.sv { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 3rem; gap: 14px; align-items: center; font-size: .92rem; }
+.sv .bar { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 3px; }
+.sv .bar i { height: 16px; border-radius: 2px; background: var(--accent); }
+.sv .n { font-family: var(--font-mono); font-weight: 700; color: var(--accent); text-align: right; }
+.sv.total { border-top: 1px solid var(--line); padding-top: 10px; font-weight: 600; }
+@media (max-width: 560px) { .sv { grid-template-columns: 7.5rem minmax(0, 1fr) 2.5rem; font-size: .82rem; } }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 620px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: .72rem; padding: 2px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.tag.keep { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.note { font-size: .82rem; color: var(--muted); margin-top: 12px; }
+
+/* Roadmap tabs */
+.tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+.tabs button { font: 600 .9rem var(--font-body); padding: 10px 18px; border: 0; background: var(--surface); color: var(--muted); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.weeks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+@media (max-width: 760px) { .weeks { grid-template-columns: 1fr; } }
+.weeks li { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 12px; padding-block: 11px; border-bottom: 1px solid var(--line); }
+.weeks .w { font-family: var(--font-mono); font-weight: 700; font-size: .85rem; color: var(--c); padding-top: 2px; }
+.weeks .t { font-weight: 600; font-size: .95rem; }
+.weeks .m { font-size: .82rem; color: var(--muted); }
+.weeks .exam-pill { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; margin-left: 6px; padding: 1px 6px; border: 1px solid var(--ink); border-radius: 2px; vertical-align: 2px; }
+.weeks .phase-break { grid-column: 1 / -1; display: block; padding: 22px 0 6px; border-bottom: 2px solid var(--c); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 1.15rem; color: var(--c); }
+
+/* Risks */
+.risks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+@media (max-width: 760px) { .risks { grid-template-columns: 1fr; } }
+.risk { display: grid; gap: 6px; }
+.risk h3 { font-size: 1.2rem; }
+.risk p { font-size: .93rem; color: var(--muted); }
+.risk p b { color: var(--ink); font-weight: 600; }
+
+footer { padding-block: 32px 48px; border-top: 1px solid var(--line); font-size: .82rem; color: var(--muted); display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ribbon.new .cell { animation: grow .5s ease-out both; animation-delay: calc(var(--i) * 18ms); }
+  @keyframes grow { from { transform: scaleY(.35); } to { transform: none; } }
+}
+
+/* Standalone page reset + downloads */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.topbar nav { display: flex; gap: 18px; align-items: center; }
+.topbar nav a { color: var(--ink); font-weight: 600; font-size: .9rem; text-decoration: none; border-bottom: 2px solid var(--accent); }
+.downloads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 700px) { .downloads { grid-template-columns: 1fr; } }
+.dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 18px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); text-decoration: none; transition: border-color .15s; }
+.dl:hover, .dl:focus-visible { border-color: var(--accent); outline: none; }
+.dl .ext { grid-row: span 3; align-self: start; font-family: var(--font-mono); font-weight: 700; font-size: .85rem; padding: 10px 8px; border: 2px solid var(--c); color: var(--c); border-radius: 3px; min-width: 3.6rem; text-align: center; }
+.dl strong { font-family: var(--font-display); font-size: 1.35rem; text-transform: uppercase; font-weight: 800; line-height: 1.1; }
+.dl span { font-size: .9rem; color: var(--muted); }
+.dl .go { font-weight: 600; color: var(--accent); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">AI-Driven <span>SDLC</span></div>
+    <nav><span class="eyebrow">Đề xuất · 30/10/2026</span><a href="#tai-lieu">Tải tài liệu</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Rikkei Academy · Chương trình AI-Driven Software Development Life Cycle</div>
+    <h1>Từ 37 tuần xuống <em>26 tuần</em>, giữ nguyên năng lực đầu ra</h1>
+    <p class="lead">Lộ trình hiện tại kéo dài khoảng 9 tháng vì nhiều nội dung được dạy hai lần: một lần tự code ở Giai đoạn 1, một lần làm lại với AI agent ở Giai đoạn 2. Bản 6 tháng gộp các phần trùng, giữ đủ 4 bài thi Phase và buổi Defense, và đưa Capstone lên hệ thống IOC để tính luôn là OJT.</p>
+    <div class="stats">
+      <div class="stat"><b class="num">37</b><span>tuần, lộ trình hiện tại</span></div>
+      <div class="stat hl"><b class="num">26</b><span>tuần, lộ trình 6 tháng</span></div>
+      <div class="stat"><b class="num">−11</b><span>tuần (−30%)</span></div>
+      <div class="stat"><b class="num">6/6</b><span>mốc thi được giữ lại</span></div>
+    </div>
+  </div>
+
+  <section id="ribbon">
+    <div class="sec-head">
+      <div class="eyebrow">Đúng tỷ lệ, mỗi ô là một tuần</div>
+      <h2>Hai lộ trình đặt cạnh nhau</h2>
+      <p class="lead">Chạm hoặc rê chuột vào một ô để xem nội dung tuần đó. Chấm đen là tuần có bài thi.</p>
+    </div>
+    <div class="ribbons">
+      <div class="ribbon-row">
+        <div class="ribbon-label"><strong>Hiện tại</strong><span>10 + 18 + 9 = 37 tuần · ~9 tháng</span></div>
+        <div class="ribbon old" id="rib-old"></div>
+      </div>
+      <div class="ribbon-row">
+        <div class="ribbon-label"><strong>Đề xuất 6 tháng</strong><span>7 + 12 + 7 = 26 tuần</span></div>
+        <div class="ribbon new" id="rib-new"></div>
+        <div class="axis" id="axis"></div>
+        <div class="axis"><span class="gone-tag">11 tuần được gộp</span></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--p1)"></i>Nền tảng Fullstack</span>
+        <span><i style="background:var(--p2)"></i>AI-SDLC Module 1–4</span>
+        <span><i style="background:var(--p3)"></i>Capstone &amp; OJT</span>
+        <span><i class="dot"></i>Tuần thi</span>
+      </div>
+      <div class="cell-info" id="cell-info" aria-live="polite"><b>GỢI Ý</b>Chọn một ô ở trên để xem chi tiết tuần.</div>
+    </div>
+  </section>
+
+  <section id="phases">
+    <div class="sec-head">
+      <div class="eyebrow">Từng giai đoạn</div>
+      <h2>Rút ở đâu, giữ lại gì</h2>
+    </div>
+    <div class="phases">
+      <article class="phase" style="--c:var(--p1)">
+        <div class="eyebrow">Giai đoạn 1 · Fullstack nền tảng</div>
+        <div class="from-to"><span class="old">10</span><span class="arrow">→</span><span class="new">7</span><small>tuần</small></div>
+        <ul>
+          <li><span>Git + HTML/CSS responsive</span><span class="wk">gộp <b>T1+T2</b></span></li>
+          <li><span>JS ES6+ và Async/Fetch</span><span class="wk">gộp <b>T3+T4</b></span></li>
+          <li><span>React: component, state, hooks, forms</span><span class="wk"><b>T5, T6</b></span></li>
+          <li><span>Node/Express + Sequelize</span><span class="wk"><b>T7, T8</b></span></li>
+          <li><span>Auth/JWT</span><span class="wk">chuyển sang <b>GĐ2</b></span></li>
+        </ul>
+        <p class="why">7 tuần × 6h = 42h, nhiều hơn 39,5h đang có kế hoạch chi tiết trong file Excel hiện tại.</p>
+      </article>
+      <article class="phase" style="--c:var(--p2)">
+        <div class="eyebrow">Giai đoạn 2 · AI-SDLC M1–M4</div>
+        <div class="from-to"><span class="old">18</span><span class="arrow">→</span><span class="new">12</span><small>tuần</small></div>
+        <ul>
+          <li><span>M1 AI-assisted Programming</span><span class="wk">3 → <b>2</b></span></li>
+          <li><span>M2 Spec-first SE (thêm ADR)</span><span class="wk">4 → <b>3</b></span></li>
+          <li><span>M3 Agentic Fullstack (nhận Auth)</span><span class="wk">6 → <b>4</b></span></li>
+          <li><span>M4 Security, DevOps, Cloud</span><span class="wk">5 → <b>3</b></span></li>
+        </ul>
+        <p class="why">Học viên đã tự code fullstack ở GĐ1, nên M3 chỉ tập trung vào giao việc, review và kiểm soát agent. M4 bỏ tuần thi riêng, thi vào cuối tuần 19.</p>
+      </article>
+      <article class="phase" style="--c:var(--p3)">
+        <div class="eyebrow">Giai đoạn 3 · Capstone &amp; OJT</div>
+        <div class="from-to"><span class="old">9</span><span class="arrow">→</span><span class="new">7</span><small>tuần</small></div>
+        <ul>
+          <li><span>Kickoff, spec baseline (M0–M1)</span><span class="wk"><b>1</b> tuần</span></li>
+          <li><span>Sprint Backend, Frontend (M2–M3)</span><span class="wk"><b>2</b> tuần</span></li>
+          <li><span>Hardening, CI, release (M4–M6)</span><span class="wk"><b>1</b> tuần</span></li>
+          <li><span>Pha Brownfield trên code nhóm khác</span><span class="wk"><b>2</b> tuần</span></li>
+          <li><span>Defense + đánh giá OJT (M7)</span><span class="wk"><b>1</b> tuần</span></li>
+        </ul>
+        <p class="why">Capstone M5 và OJT trước đây đều là làm dự án. Gộp lại và chạy trên IOC theo Scrum vẫn giữ được cam kết OJT và Brownfield.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="savings">
+    <div class="sec-head">
+      <div class="eyebrow">11 tuần được tiết kiệm từ đâu</div>
+      <h2>Số tuần gộp theo từng phần</h2>
+    </div>
+    <div class="savings" id="savings-bars"></div>
+  </section>
+
+  <section id="duplicates">
+    <div class="sec-head">
+      <div class="eyebrow">Lý do rút được mà không mất nội dung</div>
+      <h2>Các phần đang dạy hai lần</h2>
+      <p class="lead">Phần nền do học viên tự code được giữ ở GĐ1. GĐ2 chỉ học cách giao việc, kiểm soát và review agent trên chính nội dung đó.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Nội dung</th><th>Giai đoạn 1</th><th>Giai đoạn 2</th><th>Lộ trình 6 tháng</th></tr></thead>
+        <tbody>
+          <tr><td>Git, branch, Pull Request</td><td class="num">Tuần 1</td><td class="num">Tuần 8</td><td>Cơ bản học qua e-learning; workflow nhóm dạy ở tuần 13</td></tr>
+          <tr><td>Backend Express, CRUD, Database</td><td class="num">Tuần 7–8</td><td class="num">Tuần 9–10</td><td>GĐ1 tự code; tuần 14 làm lại qua agent</td></tr>
+          <tr><td>Auth, JWT, bảo vệ route</td><td class="num">Tuần 9</td><td class="num">Tuần 10</td><td>Chỉ dạy một lần, ở tuần 14</td></tr>
+          <tr><td>Frontend React gọi API</td><td class="num">Tuần 5–6</td><td class="num">Tuần 11</td><td>GĐ1 tự code; tuần 15 tích hợp fullstack + E2E</td></tr>
+          <tr><td>Fetch, async/await</td><td class="num">Tuần 3, Lab 3.2</td><td class="num">Tuần 4</td><td>Gộp vào tuần 2</td></tr>
+          <tr><td>Làm dự án hoàn chỉnh</td><td class="num">M5, 5 tuần</td><td class="num">OJT, 4 tuần</td><td>Capstone chạy trên IOC, 7 tuần</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="sec-head">
+      <div class="eyebrow">Chi tiết từng tuần</div>
+      <h2>Lộ trình theo tuần</h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Chọn lộ trình">
+      <button id="tab-new" role="tab" aria-selected="true" aria-controls="weeks">Đề xuất · 26 tuần</button>
+      <button id="tab-old" role="tab" aria-selected="false" aria-controls="weeks">Hiện tại · 37 tuần</button>
+    </div>
+    <ol class="weeks" id="weeks" role="tabpanel"></ol>
+  </section>
+
+  <section id="hours">
+    <div class="sec-head">
+      <div class="eyebrow">Giờ học</div>
+      <h2>Thời lượng so sánh</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Phần</th><th>Hiện tại</th><th>Đề xuất</th><th>Ghi chú</th></tr></thead>
+        <tbody>
+          <tr><td>GĐ1 Fullstack</td><td class="num">10 tuần · 60h ghi<br>(39,5h có chi tiết)</td><td class="num">7 tuần · 42h</td><td>2 buổi × 3h/tuần, cộng ~45 phút tự học trước mỗi tuần</td></tr>
+          <tr><td>GĐ2 Module 1–4</td><td class="num">18 tuần · ~162h*</td><td class="num">12 tuần · ~108h*</td><td>3 buổi/tuần: tự học, mentor, giảng viên</td></tr>
+          <tr><td>Capstone + OJT</td><td class="num">5 + 4 tuần</td><td class="num">7 tuần</td><td>Capstone chạy trên IOC, tính là OJT</td></tr>
+          <tr><td><b>Tổng</b></td><td class="num"><b>37 tuần · ~9 tháng</b></td><td class="num"><b>26 tuần · 6 tháng</b></td><td><span class="tag">−11 tuần</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">* File Excel hiện chưa ghi thời lượng cho GĐ2. Số giờ ở đây giả định mỗi buổi 3h, mỗi tuần 9h, trong đó 6h có mentor hoặc giảng viên.</p>
+  </section>
+
+  <section id="risks">
+    <div class="sec-head">
+      <div class="eyebrow">Cần quyết định trước khi áp dụng</div>
+      <h2>Rủi ro và cách xử lý</h2>
+    </div>
+    <div class="risks">
+      <div class="risk"><h3>Người chuyển ngành khó theo kịp GĐ1</h3><p>Học fullstack từ đầu trong 42h là rất nhanh. <b>Cách xử lý:</b> có bài test đầu vào và khóa dự bị e-learning 2–3 tuần trước khai giảng, không tính vào 6 tháng.</p></div>
+      <div class="risk"><h3>Một số tuần GĐ2 nặng hơn</h3><p>Các tuần 9, 12, 14 và 18 gánh nội dung của hai tuần cũ. <b>Cách xử lý:</b> buổi tự học cần có video, checklist và template đầu ra thật rõ.</p></div>
+      <div class="risk"><h3>Mutation Testing chưa có buổi riêng</h3><p>Đây là cam kết đầu ra trong tài liệu tư vấn. <b>Cách xử lý:</b> đưa thành bài thực hành nhỏ ở tuần 13 (TDD), hoặc bỏ khỏi cam kết.</p></div>
+      <div class="risk"><h3>6 tháng có tính cả OJT không?</h3><p>Bản này tính cả OJT trong 26 tuần. <b>Nếu OJT tính riêng:</b> có thể nới thành GĐ1 8 tuần và GĐ2 18 tuần (gồm Capstone), sau đó OJT thêm 4 tuần.</p></div>
+    </div>
+  </section>
+
+
+  <section id="tai-lieu">
+    <div class="sec-head">
+      <div class="eyebrow">Tài liệu đi kèm</div>
+      <h2>Tải chương trình 6 tháng</h2>
+      <p class="lead">Hai file dưới đây dùng cùng lộ trình 26 tuần với trang này.</p>
+    </div>
+    <div class="downloads">
+      <a class="dl" style="--c:var(--good)" href="files/AI-Driven-SDLC-6-thang.xlsx" download>
+        <span class="ext">XLSX</span>
+        <strong>Chương trình chi tiết</strong>
+        <span>6 sheet: tổng quan 26 tuần, thống kê thời lượng (có công thức), chi tiết GĐ1–GĐ3, so sánh cũ và mới · 31 KB</span>
+        <span class="go">Tải file Excel</span>
+      </a>
+      <a class="dl" style="--c:var(--p1)" href="files/AI-Driven-SDLC-6-thang.docx" download>
+        <span class="ext">DOCX</span>
+        <strong>Tài liệu chương trình</strong>
+        <span>Tài liệu tư vấn 12 trang đã cập nhật lộ trình 6 tháng, quyền lợi, đầu ra và quy trình việc làm · 5,4 MB</span>
+        <span class="go">Tải file Word</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Số liệu lấy từ "CHƯƠNG TRÌNH AI - DRIVEN SDLC CHI TIẾT.xlsx" và tài liệu chương trình bản Word, cập nhật 30/10/2026.</span>
+    <span>Đây là bản đề xuất để thảo luận nội bộ, chưa phải lộ trình chính thức.</span>
+  </footer>
+</div>
+
+<script>
+const OLD = [
+  // [phase, title, fate, exam]
+  [1,"Workspace setup & Git","Gộp vào tuần mới 1"],
+  [1,"HTML, CSS & Responsive","Gộp vào tuần mới 1"],
+  [1,"JavaScript ES6+","Gộp vào tuần mới 2"],
+  [1,"API Integration & Fetch","Gộp vào tuần mới 2"],
+  [1,"React Fundamentals","Thành tuần mới 3"],
+  [1,"React Hooks & Forms","Tuần mới 3–4"],
+  [1,"Node.js & Express API","Thành tuần mới 5"],
+  [1,"Database với Sequelize","Thành tuần mới 6"],
+  [1,"Authentication & Security","Chuyển sang tuần mới 14"],
+  [1,"Integration & Final Exam","Thành tuần mới 7",1],
+  [2,"M1 · AI-assisted & Agentic SDLC","Gộp vào tuần mới 8"],
+  [2,"M1 · Workspace & Agent Memory","Gộp vào tuần mới 8"],
+  [2,"M1 · Governance + MCP + Thi Phase I","Thành tuần mới 9",1],
+  [2,"M2 · Requirement + MoSCoW + PII","Gộp vào tuần mới 10"],
+  [2,"M2 · Story & AC + Wireframe","Tuần mới 10–11"],
+  [2,"M2 · Database Contract & ERD","Gộp vào tuần mới 11"],
+  [2,"M2 · API + Plan + Thi Phase II","Thành tuần mới 12",1],
+  [2,"M3 · Test-first/TDD + Git","Gộp vào tuần mới 13"],
+  [2,"M3 · Task Contract & Backend","Tuần mới 13–14"],
+  [2,"M3 · Backend, Auth & Rule","Gộp vào tuần mới 14"],
+  [2,"M3 · Frontend & Integration","Gộp vào tuần mới 15"],
+  [2,"M3 · Fullstack & E2E","Gộp vào tuần mới 15"],
+  [2,"M3 · Diff Review + Thi Phase III","Thành tuần mới 16",1],
+  [2,"M4 · Debug + Self-healing","Gộp vào tuần mới 17"],
+  [2,"M4 · Security & Legal/IP","Gộp vào tuần mới 17"],
+  [2,"M4 · Docker & CI + AI Review Gate","Gộp vào tuần mới 18"],
+  [2,"M4 · Cloud + Observability + Maintenance","Tuần mới 18–19"],
+  [2,"M4 · Thi Phase IV","Thi vào cuối tuần mới 19",1],
+  [3,"M5 · Kickoff · M0–M1","Thành tuần mới 20"],
+  [3,"M5 · Backend · M2","Thành tuần mới 21"],
+  [3,"M5 · Frontend · M3","Thành tuần mới 22"],
+  [3,"M5 · Hardening · M4–M6","Thành tuần mới 23"],
+  [3,"M5 · Defense · M7","Thành tuần mới 26",1],
+  [3,"OJT tuần 1","Gộp vào Capstone trên IOC"],
+  [3,"OJT tuần 2","Gộp vào Capstone trên IOC"],
+  [3,"OJT tuần 3","Thành pha Brownfield, tuần mới 24–25"],
+  [3,"OJT tuần 4","Thành pha Brownfield, tuần mới 24–25"]
+];
+const NEW = [
+  [1,"Git + HTML/CSS responsive","Từ GĐ1 T1+T2 · cài đặt môi trường chuyển sang e-learning"],
+  [1,"JavaScript ES6+ và Async/Fetch API","Từ GĐ1 T3+T4 · bỏ phần fetch bị lặp"],
+  [1,"React: Component, Props, State, Hooks","Từ GĐ1 T5 + useEffect của T6"],
+  [1,"React: Forms, Context, gọi API","Từ GĐ1 T6"],
+  [1,"Node.js + Express REST API","Từ GĐ1 T7"],
+  [1,"Database với Sequelize","Từ GĐ1 T8 · Auth chuyển sang tuần 14"],
+  [1,"Tích hợp + Thi cuối GĐ1","Từ GĐ1 T10",1],
+  [2,"AI SDLC toàn cảnh + Workspace & Memory","Từ GĐ2 T1+T2"],
+  [2,"AGENTS.md, Governance, MCP + Thi Phase I","Từ GĐ2 T3",1],
+  [2,"Requirement, MoSCoW + Story/AC","Từ GĐ2 T4+T5 · PII thành checklist"],
+  [2,"Wireframe + ERD","Từ GĐ2 T5+T6"],
+  [2,"API contract, traceability, plan, ADR + Thi Phase II","Từ GĐ2 T7 · thêm ADR",1],
+  [2,"TDD + Git workflow + Task contract","Từ GĐ2 T8+T9 · có thể thêm Mutation Testing nhỏ"],
+  [2,"Backend qua agent + DB + Auth","Từ GĐ2 T9+T10 và GĐ1 T9"],
+  [2,"Frontend + tích hợp fullstack + E2E","Từ GĐ2 T11+T12"],
+  [2,"Diff review, refactor + Thi Phase III","Từ GĐ2 T13",1],
+  [2,"Debug, self-healing + Security/Legal","Từ GĐ2 T14+T15"],
+  [2,"Docker, CI, AI review gate + Deploy cloud","Từ GĐ2 T16+T17"],
+  [2,"Observability, maintenance + Thi Phase IV","Từ GĐ2 T17+T18 · không còn tuần thi riêng",1],
+  [3,"Kickoff, proposal, chốt spec (M0–M1)","Từ M5 T19 · chạy trên IOC"],
+  [3,"Sprint Backend (M2)","Từ M5 T20"],
+  [3,"Sprint Frontend + E2E (M3)","Từ M5 T21"],
+  [3,"Hardening, Docker/CI, release (M4–M6)","Từ M5 T22"],
+  [3,"Brownfield: change request trên code nhóm khác","Từ OJT"],
+  [3,"Brownfield: sửa bug, regression, changelog","Từ OJT"],
+  [3,"Defense trước hội đồng + đánh giá OJT (M7)","Từ M5 T23 và OJT",1]
+];
+const PHASE_NAME = {1:"Nền tảng Fullstack", 2:"AI-SDLC Module 1–4", 3:"Capstone & OJT"};
+const PHASE_VAR = {1:"var(--p1)", 2:"var(--p2)", 3:"var(--p3)"};
+
+const info = document.getElementById("cell-info");
+function showInfo(label, w) {
+  info.innerHTML = "";
+  const b = document.createElement("b");
+  b.textContent = label;
+  info.append(b, document.createTextNode(w[1] + " · " + w[2]));
+}
+function cell(w, i, label) {
+  const c = document.createElement("div");
+  c.className = "cell p" + w[0] + (w[3] ? " exam" : "");
+  c.tabIndex = 0;
+  c.title = label + ": " + w[1];
+  c.style.setProperty("--i", i);
+  const show = () => showInfo(label, w);
+  c.addEventListener("mouseenter", show);
+  c.addEventListener("focus", show);
+  c.addEventListener("click", show);
+  return c;
+}
+const ribOld = document.getElementById("rib-old");
+OLD.forEach((w, i) => ribOld.append(cell(w, i, "HIỆN TẠI · TUẦN " + (i + 1))));
+const ribNew = document.getElementById("rib-new");
+NEW.forEach((w, i) => ribNew.append(cell(w, i, "ĐỀ XUẤT · TUẦN " + (i + 1))));
+for (let i = NEW.length; i < OLD.length; i++) {
+  const g = document.createElement("div");
+  g.className = "cell gone";
+  ribNew.append(g);
+}
+const axis = document.getElementById("axis");
+for (let i = 1; i <= OLD.length; i++) {
+  const s = document.createElement("span");
+  s.textContent = (i === 1 || i % 5 === 0 || i === 26 || i === 37) ? i : "";
+  axis.append(s);
+}
+
+const SAVE = [["GĐ1 Fullstack",3],["M1 AI-assisted",1],["M2 Spec-first",1],["M3 Agentic Fullstack",2],["M4 Security/DevOps",2],["Capstone + OJT",2]];
+const sv = document.getElementById("savings-bars");
+function svRow(name, n, cls) {
+  const row = document.createElement("div");
+  row.className = "sv" + (cls ? " " + cls : "");
+  const l = document.createElement("span"); l.textContent = name;
+  const bar = document.createElement("div"); bar.className = "bar";
+  for (let i = 0; i < n; i++) bar.append(document.createElement("i"));
+  const v = document.createElement("span"); v.className = "n"; v.textContent = "−" + n;
+  row.append(l, bar, v);
+  sv.append(row);
+}
+SAVE.forEach(([n, k]) => svRow(n, k));
+svRow("Tổng", SAVE.reduce((a, [, k]) => a + k, 0), "total");
+
+const list = document.getElementById("weeks");
+function renderWeeks(data, isNew) {
+  list.innerHTML = "";
+  let last = 0;
+  data.forEach((w, i) => {
+    if (w[0] !== last) {
+      last = w[0];
+      const h = document.createElement("li");
+      h.className = "phase-break";
+      h.style.setProperty("--c", PHASE_VAR[w[0]]);
+      h.textContent = PHASE_NAME[w[0]] + " · " + data.filter(x => x[0] === w[0]).length + " tuần";
+      list.append(h);
+    }
+    const li = document.createElement("li");
+    li.style.setProperty("--c", PHASE_VAR[w[0]]);
+    const n = document.createElement("span"); n.className = "w"; n.textContent = "T" + (i + 1);
+    const body = document.createElement("div");
+    const t = document.createElement("div"); t.className = "t"; t.textContent = w[1];
+    if (w[3]) { const p = document.createElement("span"); p.className = "exam-pill"; p.textContent = "Thi"; t.append(p); }
+    const m = document.createElement("div"); m.className = "m"; m.textContent = w[2];
+    body.append(t, m);
+    li.append(n, body);
+    list.append(li);
+  });
+}
+const tNew = document.getElementById("tab-new"), tOld = document.getElementById("tab-old");
+function select(isNew) {
+  tNew.setAttribute("aria-selected", isNew); tOld.setAttribute("aria-selected", !isNew);
+  renderWeeks(isNew ? NEW : OLD, isNew);
+  try { localStorage.setItem("roadmap-tab", isNew ? "new" : "old"); } catch (e) {}
+}
+tNew.addEventListener("click", () => select(true));
+tOld.addEventListener("click", () => select(false));
+let saved = "new";
+try { saved = localStorage.getItem("roadmap-tab") || "new"; } catch (e) {}
+select(saved !== "old");
+</script>
+</body>
+</html>
